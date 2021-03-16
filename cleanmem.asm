@@ -4,10 +4,9 @@
     org $F000           ;define the code origin.
 
 Start:                  ;'Labels' indented to the left. Its customary to start Atari cartridges with a label.
-
     sei                 ;disable interrupts.
     cld                 ;disable the bcd decimal math mode.
-    ldx                 ;loads the x register with #$FF
+    ldx #$FF            ;loads the x register with #$FF
     txs                 ;Transfer the x register value [#$FF -> literally 255] to the (S)tack Pointer. I.e go to the 'top' of the stack.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -27,5 +26,5 @@ MemLoop:
 ;In 6502 Assembly, you are required to fill the 4kb of ROM. Even in the case of the Atari 2600 which doesn't have interrupts, it's still required.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     org $FFFC           ;jump to the address at the bottom of the cartridge, precisely 4 bytes from the bottom.
-    .word start         ;system expects this 2 bytes for the RESET vector. ($FFFC - $FFFD)
-    .word start         ;system expects this 2 bytes for the INTERRUPT vector. ($FFFE - $ FFFF)
+    .word Start         ;system expects this 2 bytes for the RESET vector. ($FFFC - $FFFD)
+    .word Start         ;system expects this 2 bytes for the INTERRUPT vector. ($FFFE - $ FFFF)
