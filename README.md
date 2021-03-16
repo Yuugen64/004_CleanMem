@@ -83,6 +83,13 @@ This is quite a small bit of code, but:
 - Learned about filling the 4k ROM and ending with the RESET and INTERRUPT vectors in Memory addresses $FFFC - $FFFF.
 - Wrote this first little program.
 
+3.15.21:
+- BUGFIX:: The RESET and INTERRUPT Vectors were misspelled as 'start' instead of 'Start' (the label pointer).
+- Downloaded the 'dasm' assembler and configured the path correctly.
+- Downloaded Stella emulator and began to familiarize myself with the interface.
+- Learned the syntax for assembling via CLI: dasm myprogram.asm -f3 -v0 -ocartridgename.bin
+- Got the code to assemble and run in Stella correctly.
+
 ### Main Branch:
 - Where the core project is located.
 
