@@ -90,6 +90,10 @@ This is quite a small bit of code, but:
 - Learned the syntax for assembling via CLI: dasm myprogram.asm -f3 -v0 -ocartridgename.bin
 - Got the code to assemble and run in Stella correctly.
 
+3.17.21:
+- BUGFIX:: Due to the nature of the bne (Branch if not equal to 0) instruction, there is a small bug where the Memory address at 0 is never zeroed. Re-worked the code to account for this and the inverse problem of $FF not being zeroed due to the new logic.
+- Re-iterated the differences in instructions lda #80 vs. lda $80 vs. lda #$80, and that these three do very different things to the processor and in fact have their own op codes.
+
 ### Main Branch:
 - Where the core project is located.
 

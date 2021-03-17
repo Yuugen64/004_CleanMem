@@ -15,11 +15,13 @@ Start:                  ;'Labels' indented to the left. Its customary to start A
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     lda #0              ; A = 0
     ldx #$FF            ; X = #$FF (255)
+    sta $FF             ; Make sure FF is set to 00 before the loop decrements to $FE. (Set A (0) into $FF)
 
 MemLoop:
+    dex                 ; X--
     sta $0,x            ;store the value inside register A (0), inside of memory address 0 + register X's value (255) -> Store the value of
                         ; 0 inside memory address (0 + 255).
-    dex                 ; X--
+    
     bne MemLoop         ;branch if not equal to zero back to MemLoop (Loop until X==0 (P-flag is set)).
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
